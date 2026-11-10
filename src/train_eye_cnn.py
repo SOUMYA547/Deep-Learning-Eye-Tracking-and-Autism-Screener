@@ -187,6 +187,11 @@ fig.savefig(config.OUT_DIR / "eye_cnn_gradcam.png", dpi=200, bbox_inches="tight"
 
 model.save(config.MODEL_DIR / "asd_eye_cnn.keras")
 json.dump({"threshold": thr}, open(config.MODEL_DIR / "eye_threshold.json", "w"))
+json.dump({"train_children": sorted({str(g) for g in groups[tr]}),
+           "val_children": sorted({str(g) for g in groups[va]}),
+           "test_children": sorted({str(g) for g in groups[te]})},
+          open(config.MODEL_DIR / "split_children.json", "w"), indent=1)
+print("Held-out TEST children (model never saw them):", sorted({str(g) for g in groups[te]}))
 print("Saved model  :", config.MODEL_DIR / "asd_eye_cnn.keras")
 print("Saved figures:", config.OUT_DIR)
 print("Next:  python src/train_questionnaire.py")

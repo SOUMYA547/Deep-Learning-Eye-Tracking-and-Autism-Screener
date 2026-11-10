@@ -1,9 +1,3 @@
-"""STEP 2B - use the READY-MADE Carette et al. scanpath images (no raw CSV needed).
-Folder you point to must contain  Images/TCImages, Images/TSImages  and  Metadata/*.csv
-(TS = ASD group, TC = typically developing control group).
-
-Run:  python src/prepare_carette.py --src data/carette
-"""
 import argparse
 import shutil
 import numpy as np
